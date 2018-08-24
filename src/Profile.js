@@ -1,27 +1,33 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
 class Profile extends React.Component {
-  incrementAge = () => {
-    console.log('increment age')
+  incrementLevel = () => {
+    console.log('Increment Level')
   }
 
-  decrementAge = () => {
-    console.log('decrement age')
+  decrementLevel = () => {
+    console.log('Decrement Level')
   }
 
   render() {
-    const { name, age } = this.props.user
+    const { name, level } = this.props.user
 
     return (
       <div>
-        <button onClick={this.incrementAge}>+</button>
+        <button onClick={this.incrementLevel}>+</button>
         <span>
-          {name} ({age} years old)
+          {name} (level {level})
         </span>
-        <button onClick={this.decrementAge}>-</button>
+        <button onClick={this.decrementLevel}>-</button>
       </div>
     )
   }
+}
+
+Profile.propTypes = {
+  name: PropTypes.string,
+  level: PropTypes.number
 }
 
 export default Profile

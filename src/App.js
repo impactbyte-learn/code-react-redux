@@ -6,7 +6,7 @@ class App extends React.Component {
   state = {
     user: {
       name: 'Tony Stark',
-      age: 30
+      level: 30
     }
   }
 
