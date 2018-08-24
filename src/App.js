@@ -8,8 +8,10 @@ class App extends React.Component {
     return (
       <div>
         <h1>Code React State</h1>
+        <hr />
         <code>Profile</code>
         <Profile />
+        <hr />
         <code>ProfileConventional</code>
         <ProfileConventional />
       </div>
