@@ -13,6 +13,7 @@ class ProfileConventional extends React.Component {
     this.setState(state => {
       return {
         user: {
+          ...state.user,
           level: state.user.level + 1
         }
       }
@@ -23,6 +24,7 @@ class ProfileConventional extends React.Component {
     this.setState(state => {
       return {
         user: {
+          ...state.user,
           level: state.user.level - 1
         }
       }
