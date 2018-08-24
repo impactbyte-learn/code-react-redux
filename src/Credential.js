@@ -7,6 +7,7 @@ class Credential extends React.Component {
   static get propTypes() {
     return {
       children: PropTypes.any,
+      message: PropTypes.message,
       token: PropTypes.string
     }
   }
