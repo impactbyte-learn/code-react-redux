@@ -14,7 +14,8 @@ class Register extends React.Component {
 
   state = {
     email: '',
-    password: ''
+    password: '',
+    phone: ''
   }
 
   handleChange = event => {
@@ -28,6 +29,7 @@ class Register extends React.Component {
       payload: {
         email: this.state.email,
         password: this.state.password,
+        phone: this.state.phone,
         user: PropTypes.object
       }
     })
@@ -47,6 +49,12 @@ class Register extends React.Component {
           name="password"
           type="password"
           placeholder="password"
+          onChange={this.handleChange}
+        />
+        <input
+          name="phone"
+          type="phone"
+          placeholder="+62"
           onChange={this.handleChange}
         />
         <button type="submit">Register</button>

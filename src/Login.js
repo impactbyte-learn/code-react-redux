@@ -44,7 +44,7 @@ class Login extends React.Component {
       payload: {
         login: payload,
         token: response.data.token || '',
-        message: response.data.message
+        message: response.data.message || ''
       }
     })
   }

@@ -3,6 +3,7 @@ import React from 'react'
 import { createStore } from 'redux'
 import { Provider } from 'react-redux'
 
+import Header from './Header'
 import Message from './Message'
 import ProfileConventional from './ProfileConventional'
 import Profile from './Profile'
@@ -47,6 +48,7 @@ const reducer = (state = initialState, action) => {
         ...state.user,
         register: action.payload
       }
+      // message: action.payload.message
     }
   }
 
@@ -73,24 +75,12 @@ class App extends React.Component {
     return (
       <Provider store={store}>
         <main>
-          <h1>Code React State</h1>
-          <hr />
-
+          <Header />
           <ProfileConventional />
-          <hr />
-
           <Profile />
-          <hr />
-
           <Register />
-          <hr />
-
           <Login />
-          <hr />
-
           <Credential />
-          <hr />
-
           <Message />
         </main>
       </Provider>
