@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 
 import { connect } from 'react-redux'
 
-class Register extends React.Component {
+class Login extends React.Component {
   static get propTypes() {
     return {
       children: PropTypes.any,
@@ -34,7 +34,7 @@ class Register extends React.Component {
   render() {
     return (
       <form onSubmit={this.handleSubmit}>
-        <h2>Register</h2>
+        <h2>Login</h2>
         <input
           name="email"
           type="text"
@@ -47,7 +47,7 @@ class Register extends React.Component {
           placeholder="password"
           onChange={this.handleChange}
         />
-        <button type="submit">Register</button>
+        <button type="submit">Login</button>
       </form>
     )
   }
@@ -57,4 +57,4 @@ const mapStateToProps = state => {
   return state
 }
 
-export default connect(mapStateToProps)(Register)
+export default connect(mapStateToProps)(Login)

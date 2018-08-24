@@ -7,14 +7,16 @@ import Message from './Message'
 import ProfileConventional from './ProfileConventional'
 import Profile from './Profile'
 import Register from './Register'
+import Login from './Login'
+import Credential from './Credential'
 
 const initialState = {
   user: {
     name: 'Tony Stark',
     level: 1,
-    token: 'abcdef',
     register: {},
-    login: {}
+    login: {},
+    token: '...'
   }
 }
 
@@ -69,6 +71,14 @@ class App extends React.Component {
 
           <code>Register</code>
           <Register />
+          <hr />
+
+          <code>Login</code>
+          <Login />
+          <hr />
+
+          <code>Credential</code>
+          <Credential />
           <hr />
 
           <Message />
