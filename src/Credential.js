@@ -19,7 +19,7 @@ class Credential extends React.Component {
     return (
       <div>
         <h2>Credential</h2>
-        <p>{this.state.token}</p>
+        <p>Token: {this.props.token}</p>
       </div>
     )
   }

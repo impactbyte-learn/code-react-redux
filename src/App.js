@@ -38,13 +38,18 @@ const reducer = (state = initialState, action) => {
     }
   case 'REGISTER':
     return {
-      ...state,
-      register: action.payload
+      user: {
+        ...state.user,
+        register: action.payload
+      }
     }
   case 'LOGIN':
     return {
-      ...state,
-      login: action.payload
+      user: {
+        ...state.user,
+        login: action.payload,
+        token: 'response.token'
+      }
     }
   default:
     return state
@@ -61,23 +66,18 @@ class App extends React.Component {
           <h1>Code React State</h1>
           <hr />
 
-          <code>ProfileConventional</code>
           <ProfileConventional />
           <hr />
 
-          <code>Profile</code>
           <Profile />
           <hr />
 
-          <code>Register</code>
           <Register />
           <hr />
 
-          <code>Login</code>
           <Login />
           <hr />
 
-          <code>Credential</code>
           <Credential />
           <hr />
 

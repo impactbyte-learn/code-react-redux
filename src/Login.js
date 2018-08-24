@@ -7,7 +7,8 @@ class Login extends React.Component {
   static get propTypes() {
     return {
       children: PropTypes.any,
-      dispatch: PropTypes.any
+      dispatch: PropTypes.any,
+      login: PropTypes.object
     }
   }
 
@@ -23,7 +24,7 @@ class Login extends React.Component {
   handleSubmit = event => {
     event.preventDefault()
     this.props.dispatch({
-      type: 'REGISTER',
+      type: 'LOGIN',
       payload: {
         email: this.state.email,
         password: this.state.password
@@ -48,13 +49,16 @@ class Login extends React.Component {
           onChange={this.handleChange}
         />
         <button type="submit">Login</button>
+        <code>{JSON.stringify(this.props.login)}</code>
       </form>
     )
   }
 }
 
 const mapStateToProps = state => {
-  return state
+  return {
+    login: state.user.login
+  }
 }
 
 export default connect(mapStateToProps)(Login)

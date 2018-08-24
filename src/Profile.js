@@ -25,7 +25,6 @@ class Profile extends React.Component {
       <div>
         <h2>Profile of {this.props.user.name}</h2>
         <h3>Level: {this.props.user.level}</h3>
-        <h4>Token: {this.props.user.token}</h4>
         <button onClick={this.incrementLevel}>+</button>
         <button onClick={this.decrementLevel}>-</button>
       </div>

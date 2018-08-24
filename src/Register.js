@@ -7,7 +7,8 @@ class Register extends React.Component {
   static get propTypes() {
     return {
       children: PropTypes.any,
-      dispatch: PropTypes.any
+      dispatch: PropTypes.any,
+      register: PropTypes.object
     }
   }
 
@@ -26,7 +27,8 @@ class Register extends React.Component {
       type: 'REGISTER',
       payload: {
         email: this.state.email,
-        password: this.state.password
+        password: this.state.password,
+        user: PropTypes.object
       }
     })
   }
@@ -48,13 +50,16 @@ class Register extends React.Component {
           onChange={this.handleChange}
         />
         <button type="submit">Register</button>
+        <code>{JSON.stringify(this.props.register)}</code>
       </form>
     )
   }
 }
 
 const mapStateToProps = state => {
-  return state
+  return {
+    register: state.user.register
+  }
 }
 
 export default connect(mapStateToProps)(Register)

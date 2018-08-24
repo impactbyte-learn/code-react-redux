@@ -4,8 +4,7 @@ class ProfileConventional extends React.Component {
   state = {
     user: {
       name: 'Tony Stark',
-      level: 1,
-      token: 'abcdefgh'
+      level: 1
     }
   }
 
@@ -34,9 +33,8 @@ class ProfileConventional extends React.Component {
   render() {
     return (
       <div>
-        <h2>Profile of {this.state.user.name}</h2>
+        <h2>Conventional Profile of {this.state.user.name}</h2>
         <h3>Level: {this.state.user.level}</h3>
-        <h4>Token: {this.state.user.token}</h4>
         <button onClick={this.incrementLevel}>+</button>
         <button onClick={this.decrementLevel}>-</button>
       </div>
