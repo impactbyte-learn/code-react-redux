@@ -7,23 +7,48 @@ class Register extends React.Component {
   static get propTypes() {
     return {
       children: PropTypes.any,
-      message: PropTypes.string,
       dispatch: PropTypes.any
     }
   }
 
-  register = () => {
-    this.props.dispatch({ type: 'REGISTER' })
+  state = {
+    email: '',
+    password: ''
+  }
+
+  handleChange = event => {
+    this.setState({ [event.target.name]: event.target.value })
+  }
+
+  handleSubmit = event => {
+    event.preventDefault()
+    this.props.dispatch({
+      type: 'REGISTER',
+      payload: {
+        email: this.state.email,
+        password: this.state.password
+      }
+    })
   }
 
   render() {
     return (
-      <div>
+      <form onSubmit={this.handleSubmit}>
         <h2>Register</h2>
-        <input type="text" placeholder="email@example.com" />
-        <input type="password" placeholder="password" />
-        <button onClick={this.register}>Register</button>
-      </div>
+        <input
+          name="email"
+          type="text"
+          placeholder="email@example.com"
+          onChange={this.handleChange}
+        />
+        <input
+          name="password"
+          type="password"
+          placeholder="password"
+          onChange={this.handleChange}
+        />
+        <button type="submit">Register</button>
+      </form>
     )
   }
 }

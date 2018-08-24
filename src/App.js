@@ -12,7 +12,9 @@ const initialState = {
   user: {
     name: 'Tony Stark',
     level: 1,
-    token: 'abcdef'
+    token: 'abcdef',
+    register: {},
+    login: {}
   }
 }
 
@@ -34,10 +36,13 @@ const reducer = (state = initialState, action) => {
     }
   case 'REGISTER':
     return {
-      user: {
-        ...state.user,
-        token: 'response.token'
-      }
+      ...state,
+      register: action.payload
+    }
+  case 'LOGIN':
+    return {
+      ...state,
+      login: action.payload
     }
   default:
     return state
@@ -52,16 +57,21 @@ class App extends React.Component {
       <Provider store={store}>
         <main>
           <h1>Code React State</h1>
-          <Message />
           <hr />
+
           <code>ProfileConventional</code>
           <ProfileConventional />
           <hr />
+
           <code>Profile</code>
           <Profile />
           <hr />
+
           <code>Register</code>
           <Register />
+          <hr />
+
+          <Message />
         </main>
       </Provider>
     )
