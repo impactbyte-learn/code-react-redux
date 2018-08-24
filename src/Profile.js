@@ -23,10 +23,9 @@ class Profile extends React.Component {
 
     return (
       <div>
+        <h2>Profile of {user.name}</h2>
+        <h3>Level: {user.level}</h3>
         <button onClick={this.incrementLevel}>+</button>
-        <span>
-          {user.name} (level {user.level})
-        </span>
         <button onClick={this.decrementLevel}>-</button>
       </div>
     )
