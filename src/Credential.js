@@ -12,6 +12,7 @@ class Credential extends React.Component {
   }
 
   state = {
+    message: this.props.message,
     token: this.props.token
   }
 
@@ -19,6 +20,7 @@ class Credential extends React.Component {
     return (
       <div>
         <h2>Credential</h2>
+        <p>Message: {this.props.message}</p>
         <p>Token: {this.props.token}</p>
       </div>
     )
@@ -27,6 +29,7 @@ class Credential extends React.Component {
 
 const mapStateToProps = state => {
   return {
+    message: state.message,
     token: state.user.token
   }
 }

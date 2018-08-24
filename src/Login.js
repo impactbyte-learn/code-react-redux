@@ -2,6 +2,13 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 import { connect } from 'react-redux'
+import axios from 'axios'
+
+const request = axios.create({
+  baseURL: process.env.REACT_APP_API_URL || 'http://localhost:3000',
+  timeout: 5000,
+  headers: { Authorization: '' }
+})
 
 class Login extends React.Component {
   static get propTypes() {
@@ -22,13 +29,22 @@ class Login extends React.Component {
     this.setState({ [event.target.name]: event.target.value })
   }
 
-  handleSubmit = event => {
+  handleSubmit = async event => {
     event.preventDefault()
+
+    const payload = {
+      email: this.state.email,
+      password: this.state.password
+    }
+
+    const response = await request.post('/users/login', payload)
+
     this.props.dispatch({
       type: 'LOGIN',
       payload: {
-        email: this.state.email,
-        password: this.state.password
+        login: payload,
+        token: response.data.token || '',
+        message: response.data.message
       }
     })
   }

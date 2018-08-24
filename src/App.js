@@ -1,5 +1,4 @@
 import React from 'react'
-import axios from 'axios'
 
 import { createStore } from 'redux'
 import { Provider } from 'react-redux'
@@ -10,12 +9,6 @@ import Profile from './Profile'
 import Register from './Register'
 import Login from './Login'
 import Credential from './Credential'
-
-const request = axios.create({
-  baseURL: process.env.REACT_APP_API_URL || 'http://localhost:3000',
-  timeout: 5000,
-  headers: { Authorization: '' }
-})
 
 const initialState = {
   user: {
@@ -58,17 +51,13 @@ const reducer = (state = initialState, action) => {
   }
 
   case 'LOGIN': {
-    const response = request.post('/users/login', {
-      email: action.payload.email,
-      password: action.payload.password
-    })
     return {
       user: {
         ...state.user,
-        login: action.payload,
-        token: response.token
+        login: action.payload.login,
+        token: action.payload.token
       },
-      message: response.message
+      message: action.payload.message
     }
   }
 
