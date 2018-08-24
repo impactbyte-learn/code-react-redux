@@ -7,8 +7,7 @@ class Profile extends React.Component {
   static get propTypes() {
     return {
       children: PropTypes.any,
-      name: PropTypes.string,
-      level: PropTypes.number,
+      user: PropTypes.object,
       dispatch: PropTypes.any
     }
   }
@@ -24,8 +23,9 @@ class Profile extends React.Component {
   render() {
     return (
       <div>
-        <h2>Profile of {this.props.name}</h2>
-        <h3>Level: {this.props.level}</h3>
+        <h2>Profile of {this.props.user.name}</h2>
+        <h3>Level: {this.props.user.level}</h3>
+        <h4>Token: {this.props.user.token}</h4>
         <button onClick={this.incrementLevel}>+</button>
         <button onClick={this.decrementLevel}>-</button>
       </div>
@@ -35,8 +35,7 @@ class Profile extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    name: state.name,
-    level: state.level
+    user: state.user
   }
 }
 

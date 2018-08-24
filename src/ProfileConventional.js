@@ -2,14 +2,19 @@ import React from 'react'
 
 class ProfileConventional extends React.Component {
   state = {
-    name: 'Tony Stark',
-    level: 1
+    user: {
+      name: 'Tony Stark',
+      level: 1,
+      token: 'abcdefgh'
+    }
   }
 
   incrementLevel = () => {
     this.setState(state => {
       return {
-        level: state.level + 1
+        user: {
+          level: state.level + 1
+        }
       }
     })
   }
@@ -17,7 +22,9 @@ class ProfileConventional extends React.Component {
   decrementLevel = () => {
     this.setState(state => {
       return {
-        level: state.level - 1
+        user: {
+          level: state.level - 1
+        }
       }
     })
   }
@@ -25,8 +32,9 @@ class ProfileConventional extends React.Component {
   render() {
     return (
       <div>
-        <h2>Profile of {this.state.name}</h2>
-        <h3>Level: {this.state.level}</h3>
+        <h2>Profile of {this.state.user.name}</h2>
+        <h3>Level: {this.state.user.level}</h3>
+        <h4>Token: {this.state.user.token}</h4>
         <button onClick={this.incrementLevel}>+</button>
         <button onClick={this.decrementLevel}>-</button>
       </div>

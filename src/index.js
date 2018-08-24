@@ -1,28 +1,36 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { AppContainer } from 'react-hot-loader'
+
 import { createStore } from 'redux'
 import { Provider } from 'react-redux'
 
-import App from './App'
 import registerServiceWorker from './registerServiceWorker'
+import App from './App'
 
 const initialState = {
-  name: 'Tony Stark',
-  level: 1
+  user: {
+    name: 'Tony Stark',
+    level: 1,
+    token: 'abcdef'
+  }
 }
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
   case 'INCREMENT_LEVEL':
     return {
-      ...state,
-      level: state.level + 1
+      user: {
+        ...state.user,
+        level: state.user.level + 1
+      }
     }
   case 'DECREMENT_LEVEL':
     return {
-      ...state,
-      level: state.level - 1
+      user: {
+        ...state.user,
+        level: state.user.level - 1
+      }
     }
   default:
     return state
