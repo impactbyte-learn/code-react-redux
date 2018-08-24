@@ -8,7 +8,8 @@ class Login extends React.Component {
     return {
       children: PropTypes.any,
       dispatch: PropTypes.any,
-      login: PropTypes.object
+      login: PropTypes.object,
+      message: PropTypes.string
     }
   }
 

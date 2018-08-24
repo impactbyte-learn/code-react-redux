@@ -14,6 +14,7 @@ class Message extends React.Component {
   render() {
     return (
       <small>
+        <p>Helper Message</p>
         <code>{JSON.stringify(this.props)}</code>
       </small>
     )
