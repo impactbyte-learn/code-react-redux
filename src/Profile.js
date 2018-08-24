@@ -1,30 +1,31 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
+import { connect } from 'react-redux'
+
 class Profile extends React.Component {
   static get propTypes() {
     return {
       children: PropTypes.any,
       name: PropTypes.string,
-      level: PropTypes.number
+      level: PropTypes.number,
+      dispatch: PropTypes.any
     }
   }
 
   incrementLevel = () => {
-    console.log('Increment Level')
+    this.props.dispatch({ type: 'INCREMENT_LEVEL' })
   }
 
   decrementLevel = () => {
-    console.log('Decrement Level')
+    this.props.dispatch({ type: 'DECREMENT_LEVEL' })
   }
 
   render() {
-    const { user } = this.props
-
     return (
       <div>
-        <h2>Profile of {user.name}</h2>
-        <h3>Level: {user.level}</h3>
+        <h2>Profile of {this.props.name}</h2>
+        <h3>Level: {this.props.level}</h3>
         <button onClick={this.incrementLevel}>+</button>
         <button onClick={this.decrementLevel}>-</button>
       </div>
@@ -32,4 +33,11 @@ class Profile extends React.Component {
   }
 }
 
-export default Profile
+const mapStateToProps = state => {
+  return {
+    name: state.name,
+    level: state.level
+  }
+}
+
+export default connect(mapStateToProps)(Profile)

@@ -1,17 +1,43 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
+import { AppContainer } from 'react-hot-loader'
+import { createStore } from 'redux'
+import { Provider } from 'react-redux'
 
 import App from './App'
 import registerServiceWorker from './registerServiceWorker'
 
-import { AppContainer } from 'react-hot-loader'
+const initialState = {
+  name: 'Tony Stark',
+  level: 1
+}
 
-// Wrap the rendering in a function:
+const reducer = (state = initialState, action) => {
+  switch (action.type) {
+  case 'INCREMENT_LEVEL':
+    return {
+      ...state,
+      level: state.level + 1
+    }
+  case 'DECREMENT_LEVEL':
+    return {
+      ...state,
+      level: state.level - 1
+    }
+  default:
+    return state
+  }
+}
+
+const store = createStore(reducer)
+
 const render = Component => {
   ReactDOM.render(
     // Wrap App inside AppContainer
     <AppContainer>
-      <Component />
+      <Provider store={store}>
+        <Component />
+      </Provider>
     </AppContainer>,
     document.getElementById('root')
   )

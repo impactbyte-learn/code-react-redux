@@ -1,20 +1,17 @@
 import React from 'react'
 
 import Profile from './Profile'
+import ProfileConventional from './ProfileConventional'
 
 class App extends React.Component {
-  state = {
-    user: {
-      name: 'Tony Stark',
-      level: 30
-    }
-  }
-
   render() {
     return (
       <div>
         <h1>Code React State</h1>
-        <Profile user={this.state.user} />
+        <code>Profile</code>
+        <Profile />
+        <code>ProfileConventional</code>
+        <ProfileConventional />
       </div>
     )
   }
