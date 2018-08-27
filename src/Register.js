@@ -2,7 +2,12 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 import { connect } from 'react-redux'
+import axios from 'axios'
 
+const request = axios.create({
+  baseURL: process.env.REACT_APP_API_URL || 'http://localhost:3000',
+  timeout: 5000
+})
 class Register extends React.Component {
   static get propTypes() {
     return {
@@ -22,15 +27,21 @@ class Register extends React.Component {
     this.setState({ [event.target.name]: event.target.value })
   }
 
-  handleSubmit = event => {
+  handleSubmit = async event => {
     event.preventDefault()
+
+    const payload = {
+      email: this.state.email,
+      password: this.state.password
+    }
+
+    const response = await request.post('/users/register', payload)
+
     this.props.dispatch({
       type: 'REGISTER',
       payload: {
-        email: this.state.email,
-        password: this.state.password,
-        phone: this.state.phone,
-        user: PropTypes.object
+        register: payload,
+        message: response.data.message || ''
       }
     })
   }
