@@ -47,8 +47,8 @@ const reducer = (state = initialState, action) => {
       user: {
         ...state.user,
         register: action.payload
-      }
-      // message: action.payload.message
+      },
+      message: action.payload.message
     }
   }
 
