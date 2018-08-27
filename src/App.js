@@ -68,7 +68,12 @@ const reducer = (state = initialState, action) => {
   }
 }
 
-const store = createStore(reducer)
+const store = createStore(
+  reducer,
+  // Add Redux DevTools Extension
+  // https://github.com/zalmoxisus/redux-devtools-extension#11-basic-store
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+)
 
 class App extends React.Component {
   render() {
