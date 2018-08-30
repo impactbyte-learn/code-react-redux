@@ -32,7 +32,8 @@ class Register extends React.Component {
 
     const payload = {
       email: this.state.email,
-      password: this.state.password
+      password: this.state.password,
+      phone: this.state.phone
     }
 
     const response = await request.post('/users/register', payload)
