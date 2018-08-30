@@ -13,11 +13,16 @@ class Profile extends React.Component {
   }
 
   incrementLevel = () => {
-    this.props.dispatch({ type: 'INCREMENT_LEVEL' })
+    const action = { type: 'INCREMENT_LEVEL' }
+    this.props.dispatch(action)
   }
 
   decrementLevel = () => {
     this.props.dispatch({ type: 'DECREMENT_LEVEL' })
+  }
+
+  changeGender = () => {
+    this.props.dispatch({ type: 'CHANGE_GENDER' })
   }
 
   render() {
@@ -25,16 +30,20 @@ class Profile extends React.Component {
       <div>
         <h2>Profile of {this.props.user.name}</h2>
         <h3>Level: {this.props.user.level}</h3>
-        <button onClick={this.incrementLevel}>+</button>
-        <button onClick={this.decrementLevel}>-</button>
+        <h4>Gender: {this.props.user.gender}</h4>
+        <p>
+          <button onClick={this.changeGender}>Change Gender</button>
+          <button onClick={this.incrementLevel}>+</button>
+          <button onClick={this.decrementLevel}>-</button>
+        </p>
       </div>
     )
   }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = store => {
   return {
-    user: state.user
+    user: store.user
   }
 }
 

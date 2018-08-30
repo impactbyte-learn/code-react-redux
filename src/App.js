@@ -4,17 +4,18 @@ import { createStore } from 'redux'
 import { Provider } from 'react-redux'
 
 import Header from './Header'
-import Message from './Message'
 import ProfileConventional from './ProfileConventional'
 import Profile from './Profile'
 import Register from './Register'
 import Login from './Login'
 import Credential from './Credential'
+import Message from './Message'
 
 const initialState = {
   user: {
     name: 'Tony Stark',
     level: 1,
+    gender: 'Male',
     register: {},
     login: {},
     token: ''
@@ -42,11 +43,20 @@ const reducer = (state = initialState, action) => {
     }
   }
 
+  case 'CHANGE_GENDER': {
+    return {
+      user: {
+        ...state.user,
+        gender: state.user.gender === 'Male' ? 'Female' : 'Male'
+      }
+    }
+  }
+
   case 'REGISTER': {
     return {
       user: {
         ...state.user,
-        register: action.payload
+        register: action.payload.register
       },
       message: action.payload.message
     }
@@ -68,7 +78,7 @@ const reducer = (state = initialState, action) => {
   }
 }
 
-const store = createStore(
+const reduxStore = createStore(
   reducer,
   // Add Redux DevTools Extension
   // https://github.com/zalmoxisus/redux-devtools-extension#11-basic-store
@@ -78,7 +88,7 @@ const store = createStore(
 class App extends React.Component {
   render() {
     return (
-      <Provider store={store}>
+      <Provider store={reduxStore}>
         <main>
           <Header />
           <ProfileConventional />
